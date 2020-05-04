@@ -185,108 +185,108 @@
 
     <!--javascript part-->
     <script type="text/javascript">
-
-
-        // greeting message and time 
-        //calling checkhour and it is refreshing after 1000ms
-        checkHour();
-        setInterval(() => {
+        //jquery is ready
+        $(document).ready(function () {
+            // greeting message and time 
+            //calling checkhour and it is refreshing after 1000ms
             checkHour();
-        }, 1000);
+            setInterval(() => {
+                checkHour();
+            }, 1000);
 
-        // greeting  message and image changed with time 
-        var today = new Date();
-        var curHr = today.getHours();
-        if (curHr >= 0 && curHr < 6) {
-            $("#message").text('sleeping time');
-            $("body").css("background-image", "url('assets/image/nigth.png')");
-        } else if (curHr >= 6 && curHr <= 12) {
-            $("#message").text('Good Morning');
-            $("body").css("background-image", "url('assets/image/morning.png')");
-        } else if (curHr >= 12 && curHr < 17) {
-            $("#message").text('Good Afternoon');
-            $("body").css("background-image", "url('assets/image/afternoon.png')");
-        } else {
-            $("#message").text('Good Evening');
-            $("body").css("background-image", "url('assets/image/evening.png')");
-        }
-
-
-        // code for showing time which is chaning every second
-        setInterval(() => {
-            display_ct();
-        }, 1000);
-        function display_ct() {
-            var x = new Date()
-            var x1 = x.toUTCString();// changing the display to UTC string
-            $("#currentDay").text(x1);
-
-        }
-        display_ct();
-
-
-        // on click event
-        //adding on click event listner on save button
-        $(".saveBtn").on("click", function (e) {
-            //using prevent default
-            e.preventDefault();
-            //take value of textarea in the textArea variable
-            var textArea = $(this).siblings("#textarea").val();
-            //add id number in the hour variable
-            var hour = $(this).parent().attr("id");
-            console.log(hour);
-            // add txetare input in hour index using local storage
-            localStorage.setItem(hour, textArea);
-        });
-
-        // get the value of item to local storage to browser page
-        $("#6 #textarea").val(localStorage.getItem("6"));
-        $("#7 #textarea").val(localStorage.getItem("7"));
-        $("#8 #textarea").val(localStorage.getItem("8"));
-        $("#9 #textarea").val(localStorage.getItem("9"));
-        $("#10 #textarea").val(localStorage.getItem("10"));
-        $("#11 #textarea").val(localStorage.getItem("11"));
-        $("#12 #textarea").val(localStorage.getItem("12"));
-        $("#13 #textarea").val(localStorage.getItem("13"));
-        $("#14 #textarea").val(localStorage.getItem("14"));
-        $("#15 #textarea").val(localStorage.getItem("15"));
-        $("#16 #textarea").val(localStorage.getItem("16"));
-        $("#17 #textarea").val(localStorage.getItem("17"));
-        $("#18 #textarea").val(localStorage.getItem("18"));
-
-
-
-
-        //make new function with checkHour
-        function checkHour() {
-            //add curent date in the toady 
+            // greeting  message and image changed with time 
             var today = new Date();
-            //set hours in  the curHr 
             var curHr = today.getHours();
-            //apply .each function
-            $(".row textarea").each(function () {
-                var hour = parseInt($(this).parents().attr("id"));
-                //change the color of textarea according with time
-                if (hour < curHr) {
-                    $(this).addClass("past");
-                    $(this).removeClass("present");
-                    $(this).removeClass("future");
-                }
-                else if (hour === curHr) {
-                    $(this).addClass("present");
-                    $(this).removeClass("past");
-                    $(this).removeClass("future");
+            if (curHr >= 0 && curHr < 6) {
+                $("#message").text('sleeping time');
+                $("body").css("background-image", "url('assets/image/nigth.png')");
+            } else if (curHr >= 6 && curHr <= 12) {
+                $("#message").text('Good Morning');
+                $("body").css("background-image", "url('assets/image/morning.png')");
+            } else if (curHr >= 12 && curHr < 17) {
+                $("#message").text('Good Afternoon');
+                $("body").css("background-image", "url('assets/image/afternoon.png')");
+            } else {
+                $("#message").text('Good Evening');
+                $("body").css("background-image", "url('assets/image/evening.png')");
+            }
 
-                }
-                else {
-                    $(this).addClass("future");
-                    $(this).removeClass("past");
-                    $(this).removeClass("present");
-                }
-            })
 
-        }
+            // code for showing time which is chaning every second
+            setInterval(() => {
+                display_ct();
+            }, 1000);
+            function display_ct() {
+                var x = new Date()
+                var x1 = x.toUTCString();// changing the display to UTC string
+                $("#currentDay").text(x1);
 
+            }
+            display_ct();
+
+
+            // on click event
+            //adding on click event listner on save button
+            $(".saveBtn").on("click", function (e) {
+                //using prevent default
+                e.preventDefault();
+                //take value of textarea in the textArea variable
+                var textArea = $(this).siblings("#textarea").val();
+                //add id number in the hour variable
+                var hour = $(this).parent().attr("id");
+                console.log(hour);
+                // add txetare input in hour index using local storage
+                localStorage.setItem(hour, textArea);
+            });
+
+            // get the value of item to local storage to browser page
+            $("#6 #textarea").val(localStorage.getItem("6"));
+            $("#7 #textarea").val(localStorage.getItem("7"));
+            $("#8 #textarea").val(localStorage.getItem("8"));
+            $("#9 #textarea").val(localStorage.getItem("9"));
+            $("#10 #textarea").val(localStorage.getItem("10"));
+            $("#11 #textarea").val(localStorage.getItem("11"));
+            $("#12 #textarea").val(localStorage.getItem("12"));
+            $("#13 #textarea").val(localStorage.getItem("13"));
+            $("#14 #textarea").val(localStorage.getItem("14"));
+            $("#15 #textarea").val(localStorage.getItem("15"));
+            $("#16 #textarea").val(localStorage.getItem("16"));
+            $("#17 #textarea").val(localStorage.getItem("17"));
+            $("#18 #textarea").val(localStorage.getItem("18"));
+
+
+
+
+            //make new function with checkHour
+            function checkHour() {
+                //add curent date in the toady 
+                var today = new Date();
+                //set hours in  the curHr 
+                var curHr = today.getHours();
+                //apply .each function
+                $(".row textarea").each(function () {
+                    var hour = parseInt($(this).parents().attr("id"));
+                    //change the color of textarea according with time
+                    if (hour < curHr) {
+                        $(this).addClass("past");
+                        $(this).removeClass("present");
+                        $(this).removeClass("future");
+                    }
+                    else if (hour === curHr) {
+                        $(this).addClass("present");
+                        $(this).removeClass("past");
+                        $(this).removeClass("future");
+
+                    }
+                    else {
+                        $(this).addClass("future");
+                        $(this).removeClass("past");
+                        $(this).removeClass("present");
+                    }
+                })
+
+            }
+        });
     </script>
 
 
